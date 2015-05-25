@@ -69,6 +69,32 @@ describe "Procedures" do
       end
     end
   end
+
+  context "Questions" do
+    # Cria questions no banco de dados com factorygirl
+    let(:questions) { FactoryGirl.create_list(:question, 3) }
+
+    before do
+      # Adiciona questions para o processo a ser testado
+      procedure.questions << questions
+    end
+
+    it "responds a procedure with questions" do
+      # procedure_path(procedure) => criado ao adicionar uma rota
+      get procedure_path(procedure)
+
+      # Testa se a resposta inclui a title de cada question
+      expect(response.body).to include questions.first.title
+      expect(response.body).to include questions.second.title
+      expect(response.body).to include questions.last.title
+
+      # Testa se a resposta inclui a from de cada from
+      expect(response.body).to include questions.first.title
+      expect(response.body).to include questions.second.title
+      expect(response.body).to include questions.last.title
+    end
+  end
+
   context "Rules" do
     # Cria rules no banco de dados com factorygirl
     let(:rules) { FactoryGirl.create_list(:rule, 3) }

@@ -6,4 +6,6 @@ class Procedure
 
   embeds_many :rules
   embeds_many :comments
+  embeds_many :questions
+
 end
