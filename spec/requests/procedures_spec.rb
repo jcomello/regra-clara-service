@@ -53,6 +53,21 @@ describe "Procedures" do
       expect(response.body).to include comments.second.from
       expect(response.body).to include comments.last.from
     end
+
+    context "Receive comment" do
+      it "receive comment" do
+        post procedure_new_comment_path(procedure, comment: { text: "akjda", from: "Joao"})
+
+        expect(response).to be_success
+      end
+
+      it "saves comment received" do
+        post procedure_new_comment_path(procedure, comment: { text: "akjda", from: "Joao"})
+
+        expect(procedure.reload.comments.last.text).to eq('akjda')
+        expect(procedure.reload.comments.last.from).to eq('Joao')
+      end
+    end
   end
   context "Rules" do
     # Cria rules no banco de dados com factorygirl
