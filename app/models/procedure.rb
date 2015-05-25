@@ -5,4 +5,5 @@ class Procedure
   field :description, type: String
 
   embeds_many :rules
+  embeds_many :comments
 end
