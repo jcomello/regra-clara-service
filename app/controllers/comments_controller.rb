@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @comment = @procedure.comments.new(comment_params)
 
     if @procedure.save
-      render json: Procedure.find(params[:procedure_id])
+      render json: @comment
     else
       render :error
     end

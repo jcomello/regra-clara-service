@@ -69,8 +69,8 @@ describe "Procedures" do
         it "saves comment received" do
           post procedure_comments_path(procedure, comment: { text: "akjda", from: "Joao"})
 
-          expect(procedure.reload.comments.last.text).to eq('akjda')
-          expect(procedure.reload.comments.last.from).to eq('Joao')
+          expect(response.body).to include "akjda"
+          expect(response.body).to include "Joao"
         end
       end
     end
