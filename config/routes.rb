@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resource :comments, only: :create
 
     get "rules/:rule_id/questions", to: "questions#index", as: "rules_all_questions"
+    get "rules/:rule_id/questions/:question_id/replies", to: "replies#index", as: "rules_questions_all_replies"
 
     post "rules/:rule_id/questions", to: "questions#create", as: "rules_questions"
     post "rules/:rule_id/questions/:question_id/replies", to: "replies#create", as: "rules_questions_replies"

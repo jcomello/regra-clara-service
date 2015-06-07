@@ -156,6 +156,14 @@ describe "Procedures" do
             expect(response.body).to include replies.last.from
           end
 
+          it "responds a collection of replies" do
+            get procedure_rules_questions_all_replies_path(procedure, rule, question)
+
+            expect(response.body).to include replies.first.text
+            expect(response.body).to include replies.second.text
+            expect(response.body).to include replies.last.text
+          end
+
           context "receive replies" do
             it "receive reply" do
               post procedure_rules_questions_replies_path(procedure, rule, question, reply: { text: "Resposta correta", from: "Joao"})
