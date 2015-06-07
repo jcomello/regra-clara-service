@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resource :comments, only: :create
 
     post "rules/:rule_id/questions", to: "questions#create", as: "rules_questions"
+    post "rules/:rule_id/questions/:question_id/replies", to: "replies#create", as: "rules_questions_replies"
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

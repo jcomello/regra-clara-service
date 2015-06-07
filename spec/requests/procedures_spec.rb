@@ -131,7 +131,8 @@ describe "Procedures" do
         end
 
         context "Replies" do
-          let(:replies) { questions.first.replies }
+          let(:question) { questions.first }
+          let(:replies) { question.replies }
 
           it "reponds a question with replies" do
             get procedure_path(procedure)
@@ -141,6 +142,21 @@ describe "Procedures" do
 
             expect(response.body).to include replies.first.from
             expect(response.body).to include replies.last.from
+          end
+
+          context "receive replies" do
+            it "receive reply" do
+              post procedure_rules_questions_replies_path(procedure, rule, question, reply: { text: "Resposta correta", from: "Joao"})
+
+              expect(response).to be_success
+            end
+
+            it "return question" do
+              post procedure_rules_questions_replies_path(procedure, rule, question, reply: { text: "resoista correta", from: "Joao"})
+
+              expect(response.body).to include "resoista correta"
+              expect(response.body).to include "Joao"
+            end
           end
         end
       end
