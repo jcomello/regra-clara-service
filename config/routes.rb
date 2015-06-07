@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :procedures, only: [:index, :show], :defaults => { :format => 'json' } do
-    post 'new_comment'
+    resource :comments, only: :create
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
