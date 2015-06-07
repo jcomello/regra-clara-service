@@ -90,8 +90,10 @@ describe "Procedures" do
       end
 
       context "Questions" do
+        let(:rule) { rules.first }
+
         # Cria questions no banco de dados com factorygirl
-        let(:questions) { rules.first.questions }
+        let(:questions) { rule.questions }
 
         it "responds a procedure with questions" do
           # procedure_path(procedure) => criado ao adicionar uma rota
@@ -111,6 +113,21 @@ describe "Procedures" do
           expect(response.body).to include questions.first.replies_count.to_s
           expect(response.body).to include questions.second.replies_count.to_s
           expect(response.body).to include questions.last.replies_count.to_s
+        end
+
+        context "receive questions" do
+          it "receive question" do
+            post procedure_rules_questions_path(procedure, rule, question: { title: "akjda", from: "Joao"})
+
+            expect(response).to be_success
+          end
+
+          it "return question" do
+            post procedure_rules_questions_path(procedure, rule, question: { title: "akjda", from: "Joao"})
+
+            expect(response.body).to include "akjda"
+            expect(response.body).to include "Joao"
+          end
         end
 
         context "Replies" do

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :procedures, only: [:index, :show], :defaults => { :format => 'json' } do
     resource :comments, only: :create
+
+    post "rules/:rule_id/questions", to: "questions#create", as: "rules_questions"
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
