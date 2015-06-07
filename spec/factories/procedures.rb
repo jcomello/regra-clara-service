@@ -3,5 +3,10 @@ FactoryGirl.define do
   factory :procedure do
     sequence(:name) { |n| "Processo #{n}" }
     description "MyString"
+
+    factory :procedure_full do
+      rules { create_list :rule_with_questions, 2 }
+      comments { create_list :comment, 2 }
+    end
   end
 end

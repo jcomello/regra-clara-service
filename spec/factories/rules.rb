@@ -2,5 +2,9 @@
 FactoryGirl.define do
   factory :rule do
     sequence(:description) { |n| "Regra #{n}" }
+
+    factory :rule_with_questions do
+      questions { create_list :question_with_replies, 2 }
+    end
   end
 end

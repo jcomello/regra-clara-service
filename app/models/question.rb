@@ -3,4 +3,10 @@ class Question
 
   field :title, type: String
   field :from, type: String
+
+  embeds_many :replies
+
+  def replies_count
+    replies.count
+  end
 end

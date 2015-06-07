@@ -5,7 +5,7 @@ class ProceduresController < ApplicationController
   end
 
   def show
-    render json: Procedure.find(params[:id])
+    @procedure = Procedure.find(params[:id])
   end
 
   def new_comment

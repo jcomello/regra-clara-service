@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :procedures, only: [:index, :show] do
+  resources :procedures, only: [:index, :show], :defaults => { :format => 'json' } do
     post 'new_comment'
   end
 
