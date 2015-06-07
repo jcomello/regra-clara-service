@@ -115,6 +115,18 @@ describe "Procedures" do
           expect(response.body).to include questions.last.replies_count.to_s
         end
 
+        it "responds a collection of questions" do
+          get procedure_rules_all_questions_path(procedure, rule)
+
+          expect(response.body).to include questions.first.title
+          expect(response.body).to include questions.second.title
+          expect(response.body).to include questions.last.title
+
+          expect(response.body).to include questions.first.replies_count.to_s
+          expect(response.body).to include questions.second.replies_count.to_s
+          expect(response.body).to include questions.last.replies_count.to_s
+        end
+
         context "receive questions" do
           it "receive question" do
             post procedure_rules_questions_path(procedure, rule, question: { title: "akjda", from: "Joao"})

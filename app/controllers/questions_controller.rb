@@ -1,4 +1,11 @@
 class QuestionsController < ApplicationController
+  def index
+    @procedure = Procedure.find(params[:procedure_id])
+    @rule = @procedure.rules.find(params[:rule_id])
+
+    @questions = @rule.questions
+  end
+
   def create
     @procedure = Procedure.find(params[:procedure_id])
     @rule = @procedure.rules.find(params[:rule_id])

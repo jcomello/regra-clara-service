@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :procedures, only: [:index, :show], :defaults => { :format => 'json' } do
     resource :comments, only: :create
 
+    get "rules/:rule_id/questions", to: "questions#index", as: "rules_all_questions"
+
     post "rules/:rule_id/questions", to: "questions#create", as: "rules_questions"
     post "rules/:rule_id/questions/:question_id/replies", to: "replies#create", as: "rules_questions_replies"
   end
