@@ -19,8 +19,8 @@ describe "Procedures" do
     it "has the correct procedures" do
       get procedures_path
 
-      expect(response.body).to include "Processo 1"
-      expect(response.body).to include "Processo 3"
+      expect(response.body).to include procedures.first.name
+      expect(response.body).to include procedures.last.name
     end
 
     it "does not have non existent procedures" do
