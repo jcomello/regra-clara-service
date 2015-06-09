@@ -162,6 +162,14 @@ describe "Procedures" do
             expect(response.body).to include replies.first.text
             expect(response.body).to include replies.second.text
             expect(response.body).to include replies.last.text
+
+            expect(response.body).to include replies.first.from
+            expect(response.body).to include replies.second.from
+            expect(response.body).to include replies.last.from
+
+            expect(response.body).to include replies.first.likes.to_s
+            expect(response.body).to include replies.second.likes.to_s
+            expect(response.body).to include replies.last.likes.to_s
           end
 
           context "receive replies" do

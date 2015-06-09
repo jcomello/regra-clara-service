@@ -4,5 +4,4 @@ class Reply
   field :text,  type: String
   field :from,  type: String
   field :likes, type: Integer, default: 0
-
 end
