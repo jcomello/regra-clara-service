@@ -191,11 +191,9 @@ describe "Procedures" do
             let(:reply) { replies.first }
 
             it "receives an reply like" do
-              put procedure_replies_likes_path(procedure, rule, question, reply)
+              post procedure_replies_likes_path(procedure, rule, question, reply)
 
-              expect(response.body).to include reply.reload.text
-              expect(response.body).to include reply.reload.from
-              expect(response.body).to include "likes\":1"
+              expect(response).to redirect_to procedure_rules_questions_all_replies_path(procedure, rule, question)
             end
           end
         end

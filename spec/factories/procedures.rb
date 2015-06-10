@@ -5,8 +5,8 @@ FactoryGirl.define do
     description "MyString"
 
     factory :procedure_full do
-      rules { create_list :rule_with_questions, 2 }
-      comments { create_list :comment, 2 }
+      rules { build_list :rule_with_questions, 2 }
+      comments { build_list :comment, 2 }
     end
   end
 end

@@ -5,7 +5,7 @@ FactoryGirl.define do
     from "Livanio"
 
     factory :question_with_replies do
-      replies { create_list :reply, 2}
+      replies { build_list :reply, 2}
     end
   end
 end
