@@ -2,7 +2,7 @@ class RepliesController < ApplicationController
   before_action :find_parameters
 
   def index
-    @replies = @question.replies
+    @replies = @question.replies.order_by(likes: :desc)
   end
 
   def create
