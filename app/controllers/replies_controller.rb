@@ -19,8 +19,8 @@ class RepliesController < ApplicationController
     @reply = @question.replies.find(params[:reply_id])
     @reply.likes += 1
 
-    if @reply.save
-      render json: @question.replies
+    if @procedure.save
+      redirect_to procedure_rules_questions_all_replies_path(@procedure, @rule, @question)
     else
       render :error
     end

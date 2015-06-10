@@ -3,5 +3,7 @@ class Reply
 
   field :text,  type: String
   field :from,  type: String
-  field :likes, type: Integer, default: 0
+  field :likes, type: Integer
+
+  embedded_in :question
 end

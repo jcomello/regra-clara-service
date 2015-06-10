@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     post "rules/:rule_id/questions", to: "questions#create", as: "rules_questions"
     post "rules/:rule_id/questions/:question_id/replies", to: "replies#create", as: "rules_questions_replies"
 
-    put "rules/:rule_id/questions/:question_id/replies/:reply_id/likes", to: "replies#likes", as: "replies_likes"
+    post "rules/:rule_id/questions/:question_id/replies/:reply_id/likes", to: "replies#likes", as: "replies_likes"
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
