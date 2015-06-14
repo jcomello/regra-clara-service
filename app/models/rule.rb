@@ -4,4 +4,5 @@ class Rule
   field :description, type: String
 
   embeds_many :questions
+  embedded_in :procedure
 end

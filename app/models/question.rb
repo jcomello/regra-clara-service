@@ -5,7 +5,7 @@ class Question
   field :from, type: String
 
   embeds_many :replies
-  embedded_in :procedure
+  embedded_in :rule
 
   def replies_count
     replies.count
